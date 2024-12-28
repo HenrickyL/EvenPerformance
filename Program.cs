@@ -10,14 +10,20 @@
     }
 
     public static void Main(){
-        List<uint> tests = GetRandonList(1000);
+        List<int> lengths = new (){
+            1000,5000, 10000, 50000, 100000, 500000,
+            1000000, 2000000, 5000000
+        };
 
+        foreach(int len in lengths){
+            List<uint> tests = GetRandonList(len);
 
-        double result1 = EvenTest.Test(tests, EvenTest.IsEven);
-        double result2 = EvenTest.Test(tests, EvenTest.IsEven2);
-        
-        Console.WriteLine($"Result to {1000} in nanoseconds");
-        Console.WriteLine($"Test 1\t\tTest 2");
-        Console.WriteLine($"{result1}\t\t{result2}");
+            double result1 = EvenTest.Test(tests, EvenTest.IsEven);
+            double result2 = EvenTest.Test(tests, EvenTest.IsEven2);
+            Console.WriteLine($"Result to {len} in nanoseconds");
+            Console.WriteLine($"Test 1\t\tTest 2");
+            Console.WriteLine($"{result1}\t\t{result2}");
+            Console.WriteLine("-----------------------");
+        }
     }
 }
